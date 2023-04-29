@@ -20,7 +20,7 @@
       <itemPath>IR_lib.c</itemPath>
       <itemPath>final_main.c</itemPath>
       <itemPath>LedStrip_lib.c</itemPath>
-      <itemPath>../../asm_lib.s</itemPath>
+      <itemPath>asm_lib.s</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -238,6 +238,8 @@
                   value="${communication.interface.default}"/>
         <property key="communication.interface.jtag" value="2wire"/>
         <property key="communication.speed" value="${communication.speed.default}"/>
+        <property key="debugoptions.debug-startup" value="Use system settings"/>
+        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.simultaneous.debug" value="false"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
         <property key="freeze.timers" value="false"/>
@@ -327,6 +329,8 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-abfb"/>
         <property key="memories.rww" value="true"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/Users/mzbre/Documents/GitHub/ir_Acryllic_Lamp/plsWork.X/debug/default/plsWork_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>
