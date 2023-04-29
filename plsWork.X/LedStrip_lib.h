@@ -89,7 +89,7 @@ void writeBinToLED2(int binaryGRB[]);
 void writeBinToLED3(int binaryGRB[]);
 void wait(int ms);
 void writeColorToPanel(int panel, int color[]);
-//void rainbow(void);
+void rainbow(void);
 void invert(void);
 void twinkle(void);
 void seizure(void);

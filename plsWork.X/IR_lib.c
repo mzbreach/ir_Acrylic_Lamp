@@ -96,38 +96,38 @@ void TesterLEDSetup(void) {
     TRISBbits.TRISB6 = 0; //Sets pin RB8 / pin 17 to an output pin
 }
 
-void rainbow(void) {
-    while(1) {
-        writeColorToPanel(previousPanel, red);
-        wait(250);
-        writeColorToPanel(previousPanel, red_orange);
-        wait(250);
-        writeColorToPanel(previousPanel, orange);
-        wait(250);
-        writeColorToPanel(previousPanel, light_orange);
-        wait(250);
-        writeColorToPanel(previousPanel, yellow);
-        wait(250);
-        writeColorToPanel(previousPanel, green);
-        wait(250);
-        writeColorToPanel(previousPanel, light_green);
-        wait(250);
-        writeColorToPanel(previousPanel, cyan);
-        wait(250);
-        writeColorToPanel(previousPanel, light_blue);
-        wait(250);
-        writeColorToPanel(previousPanel, blue);
-        wait(250);
-        writeColorToPanel(previousPanel, dark_blue);
-        wait(250);
-        writeColorToPanel(previousPanel, purple);
-        wait(250);
-        writeColorToPanel(previousPanel, magenta);
-        wait(250);
-        writeColorToPanel(previousPanel, pink);
-        wait(250);
-    }
-}
+//void rainbow(void) {
+//    while(1) {
+//        writeColorToPanel(previousPanel, red);
+//        wait(250);
+//        writeColorToPanel(previousPanel, red_orange);
+//        wait(250);
+//        writeColorToPanel(previousPanel, orange);
+//        wait(250);
+//        writeColorToPanel(previousPanel, light_orange);
+//        wait(250);
+//        writeColorToPanel(previousPanel, yellow);
+//        wait(250);
+//        writeColorToPanel(previousPanel, green);
+//        wait(250);
+//        writeColorToPanel(previousPanel, light_green);
+//        wait(250);
+//        writeColorToPanel(previousPanel, cyan);
+//        wait(250);
+//        writeColorToPanel(previousPanel, light_blue);
+//        wait(250);
+//        writeColorToPanel(previousPanel, blue);
+//        wait(250);
+//        writeColorToPanel(previousPanel, dark_blue);
+//        wait(250);
+//        writeColorToPanel(previousPanel, purple);
+//        wait(250);
+//        writeColorToPanel(previousPanel, magenta);
+//        wait(250);
+//        writeColorToPanel(previousPanel, pink);
+//        wait(250);
+//    }
+//}
 
 /**
  * Timer 2 Interrupt - Sets flag to 0 and counts the number of overflows
