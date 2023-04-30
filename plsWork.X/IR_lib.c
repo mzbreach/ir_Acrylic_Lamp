@@ -399,8 +399,8 @@ void decrypt(void) {
 
         case 24:
             lcd_printStr("Btn 24");
-            asynWaveSetup();
-            dynamicFctn = 'y';
+            waveSetup();
+            dynamicFctn = 'w';
             break;
 
         case 25:
@@ -416,6 +416,8 @@ void decrypt(void) {
 
         case 27:
             lcd_printStr("Btn 27");
+            asynWaveSetup();
+            dynamicFctn = 'y';
             break;
 
         case 28:

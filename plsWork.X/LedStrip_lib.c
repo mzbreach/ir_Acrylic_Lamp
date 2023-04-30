@@ -88,12 +88,10 @@ volatile int seizureCounter = 0;
 volatile int twinkleCounter = 0;
 volatile int asynWaveCounter = 0;
 volatile int fadeCounter = 0;
+volatile int waveCounter = 0;
 
 volatile int fadeColor[27] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 volatile int fadeR = 0;
-
-
-
 
 void LedStrip_Setup(void){
     
@@ -173,6 +171,14 @@ void __attribute__((interrupt, auto_psv)) _T1Interrupt(){//ideally should trigge
         case 'i'://invert
             invert();
             LEDOverflow = 1;
+            break;
+            
+        case 'w'://Wave
+            if(LEDOverflow >= 10){
+                wave(waveCounter);
+                waveCounter = (waveCounter + 1) % 8;
+                LEDOverflow = 0;
+            }
             break;
             
             
@@ -781,10 +787,6 @@ void fade(int state){
 }
 
 void waveSetup(void){
-    
-}
-
-void wave(void) {
     int i = 0;
     memcpy(wave1, previousColor, sizeof(wave1));
     memcpy(wave2, previousColor, sizeof(wave1));
@@ -815,24 +817,44 @@ void wave(void) {
             wave1[i] = 0;
         }
     }
-    
-    while(1){
-        writeColorToPanel(previousPanel, wave1);
-        wait(200);
-        writeColorToPanel(previousPanel, wave2);
-        wait(200);
-        writeColorToPanel(previousPanel, wave3);
-        wait(200);
-        writeColorToPanel(previousPanel, wave4);
-        wait(200);
-        writeColorToPanel(previousPanel, wave5);
-        wait(200);
-        writeColorToPanel(previousPanel, wave4);
-        wait(200);
-        writeColorToPanel(previousPanel, wave3);
-        wait(200);
-        writeColorToPanel(previousPanel, wave2);
-        wait(200);
+}
+
+void wave(int state) {
+    switch(state){
+        case 0:
+            writeColorToPanel(previousPanel, wave1);
+            break;
+            
+        case 1:
+            writeColorToPanel(previousPanel, wave2);
+            break;
+            
+        case 2:
+            writeColorToPanel(previousPanel, wave3);
+            break;
+            
+        case 3:
+            writeColorToPanel(previousPanel, wave4);
+            break;
+            
+        case 4:
+            writeColorToPanel(previousPanel, wave5);
+            break;
+            
+        case 5:
+            writeColorToPanel(previousPanel, wave4);
+            break;
+            
+        case 6:
+            writeColorToPanel(previousPanel, wave3);
+            break;
+            
+        case 7:
+            writeColorToPanel(previousPanel, wave2);
+            break;
+            
+        default:
+            break;
     }
 }
 
