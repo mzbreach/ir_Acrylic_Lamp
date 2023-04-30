@@ -12,7 +12,8 @@ int panel = 0; // Change this to change the LED strip
 // These are the colors (kind of, not really) that should be used as parameters in combination with "panel"
 // With these two parameters, it is a matter of calling functions to produce the correct combination/event
 // Currently these color arrays have not been tested, so some colors might not be accurate
-int color[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int color[ARRAY_SIZE] = {0};
+int staticColor[ARRAY_SIZE] = {0};
 int green[ARRAY_SIZE] = {255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0};
 int red[ARRAY_SIZE] = {0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0};
 int blue[ARRAY_SIZE] = {0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255};
@@ -90,7 +91,7 @@ volatile int asynWaveCounter = 0;
 volatile int fadeCounter = 0;
 volatile int waveCounter = 0;
 
-volatile int fadeColor[27] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+volatile int fadeColor[ARRAY_SIZE] = {0};
 volatile int fadeR = 0;
 
 void LedStrip_Setup(void){
@@ -278,162 +279,166 @@ void masterStaticColorCreator(int state){
     switch(state) {
         case 1://off
             for (i = 0; i < ARRAY_SIZE; i++) {
-                if (i % 3 == 0) {
-                    color[i] = 0;
-                }  
-                else if (i % 3 == 1) {
-                    color[i] = 0;
-                }
-                else {
-                    color[i] = 0;
-                }
+                staticColor[i] = 0;
             }
             break;
+            
         case 4: // red
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    color[i] = 0;
+                    staticColor[i] = 0;
                 }  
                 else if (i % 3 == 1) {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }
                 else {
-                    color[i] = 0;
+                    staticColor[i] = 0;
                 }
             }
             break;
+            
         case 5: // green
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }  
                 else if (i % 3 == 1) {
-                    color[i] = 0;
+                    staticColor[i] = 0;
                 }
                 else {
-                    color[i] = 0;
+                    staticColor[i] = 0;
                 }
             }
             break;
+            
         case 6: // blue
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    color[i] = 0;
+                    staticColor[i] = 0;
                 }  
                 else if (i % 3 == 1) {
-                    color[i] = 0;
+                    staticColor[i] = 0;
                 }
                 else {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }
             }
             break;
+            
         case 7: // white
             for (i = 0; i < ARRAY_SIZE; i++) {
-                color[i] = 255;
+                staticColor[i] = 255;
             }
             break;
+            
         case 8: // orange
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    color[i] = 128;
+                    staticColor[i] = 128;
                 }  
                 else if (i % 3 == 1) {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }
                 else {
-                    color[i] = 0;
+                    staticColor[i] = 0;
                 }
             }
             break;
+            
         case 9: // light_green
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }  
                 else if (i % 3 == 1) {
-                    color[i] = 51;
+                    staticColor[i] = 51;
                 }
                 else {
-                    color[i] = 51;
+                    staticColor[i] = 51;
                 }
             }
             break;
+            
         case 10: // electric_blue
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    color[i] = 128;
+                    staticColor[i] = 128;
                 }  
                 else if (i % 3 == 1) {
-                    color[i] = 0;
+                    staticColor[i] = 0;
                 }
                 else {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }
             }
             break;
+            
         case 12: // light_orange
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    color[i] = 153;
+                    staticColor[i] = 153;
                 }  
                 else if (i % 3 == 1) {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }
                 else {
-                    color[i] = 51;
+                    staticColor[i] = 51;
                 }
             }
             break;
+            
         case 13: // cyan
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }  
                 else if (i % 3 == 1) {
-                    color[i] = 0;
+                    staticColor[i] = 0;
                 }
                 else {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }
             }
             break;
+            
         case 14: // purple
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    color[i] = 0;
+                    staticColor[i] = 0;
                 }  
                 else if (i % 3 == 1) {
-                    color[i] = 127;
+                    staticColor[i] = 127;
                 }
                 else {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }
             }
             break;
+            
         case 16: // lighter_orange
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    color[i] = 178;
+                    staticColor[i] = 178;
                 }  
                 else if (i % 3 == 1) {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }
                 else {
-                    color[i] = 102;
+                    staticColor[i] = 102;
                 }
             }
             break;
+            
         case 17: // dark_blue
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    color[i] = 51;
+                    staticColor[i] = 51;
                 }  
                 else if (i % 3 == 1) {
-                    color[i] = 51;
+                    staticColor[i] = 51;
                 }
                 else {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }
             }
             break;
@@ -441,13 +446,13 @@ void masterStaticColorCreator(int state){
         case 18: // magenta
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    color[i] = 0;
+                    staticColor[i] = 0;
                 }  
                 else if (i % 3 == 1) {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }
                 else {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }
             }
             break;
@@ -455,13 +460,13 @@ void masterStaticColorCreator(int state){
         case 20: // yellow
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }  
                 else if (i % 3 == 1) {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }
                 else {
-                    color[i] = 0;
+                    staticColor[i] = 0;
                 }
             }
             break;
@@ -469,13 +474,13 @@ void masterStaticColorCreator(int state){
         case 21: // turqoise
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }  
                 else if (i % 3 == 1) {
-                    color[i] = 0;
+                    staticColor[i] = 0;
                 }
                 else {
-                    color[i] = 128;
+                    staticColor[i] = 128;
                 }
             }
             break;
@@ -483,17 +488,19 @@ void masterStaticColorCreator(int state){
         case 22: // pink
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    color[i] = 0;
+                    staticColor[i] = 0;
                 }  
                 else if (i % 3 == 1) {
-                    color[i] = 255;
+                    staticColor[i] = 255;
                 }
                 else {
-                    color[i] = 127;
+                    staticColor[i] = 127;
                 }
             }
             break;
-        
+            
+        default:
+            break;  
     }
 }
 

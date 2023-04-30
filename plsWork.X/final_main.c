@@ -31,15 +31,12 @@ void initPIC24(void){
 }
 
 
-int main(void) {
-//    IR_Setup();
-    
+int main(void) {    
     initPIC24();
     LedStrip_Setup();
 
     lcd_init();
     
-        
     lcd_setCursor(0,0);
     lcd_printStr("hello,");
     

@@ -19,6 +19,7 @@ extern int panel; // Change this to change the LED strip
 // With these two parameters, it is a matter of calling functions to produce the correct combination/event
 // Currently these color arrays have not been tested, so some colors might not be accurate
 extern int color[ARRAY_SIZE];
+extern int staticColor[ARRAY_SIZE];
 extern int green[ARRAY_SIZE];
 extern int red[ARRAY_SIZE];
 extern int blue[ARRAY_SIZE];
