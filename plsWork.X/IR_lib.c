@@ -74,7 +74,8 @@ void IR_Setup(void) {
     IC1CONbits.ICTMR = 1; //use Timer 2 for IC1
     IC1CONbits.ICI = 0; //Interrupt every capture
     IC1CONbits.ICM = 0b010; //010 for falling edge,011 for rising edge pg.134
-    
+    IPC0bits.IC1IP = 6;//second highest IP
+    IPC1bits.T2IP = 7;//highest IP
  
     _IC1IF = 0;
 
@@ -96,49 +97,12 @@ void TesterLEDSetup(void) {
     TRISBbits.TRISB6 = 0; //Sets pin RB8 / pin 17 to an output pin
 }
 
-//void rainbow(void) {
-//    while(1) {
-//        writeColorToPanel(previousPanel, red);
-//        wait(250);
-//        writeColorToPanel(previousPanel, red_orange);
-//        wait(250);
-//        writeColorToPanel(previousPanel, orange);
-//        wait(250);
-//        writeColorToPanel(previousPanel, light_orange);
-//        wait(250);
-//        writeColorToPanel(previousPanel, yellow);
-//        wait(250);
-//        writeColorToPanel(previousPanel, green);
-//        wait(250);
-//        writeColorToPanel(previousPanel, light_green);
-//        wait(250);
-//        writeColorToPanel(previousPanel, cyan);
-//        wait(250);
-//        writeColorToPanel(previousPanel, light_blue);
-//        wait(250);
-//        writeColorToPanel(previousPanel, blue);
-//        wait(250);
-//        writeColorToPanel(previousPanel, dark_blue);
-//        wait(250);
-//        writeColorToPanel(previousPanel, purple);
-//        wait(250);
-//        writeColorToPanel(previousPanel, magenta);
-//        wait(250);
-//        writeColorToPanel(previousPanel, pink);
-//        wait(250);
-//    }
-//}
-
 /**
  * Timer 2 Interrupt - Sets flag to 0 and counts the number of overflows
  */
 void __attribute__((interrupt, auto_psv)) _T2Interrupt() {
     _T2IF = 0; //T2 interrupt flag reset
     overflow++; //gets incremented every us    
-    if(rainbowFunction){
-        rainbowFunction = 0;
-        rainbow();
-    }
 }
 
 /**
@@ -257,6 +221,7 @@ void decrypt(void) {
     lcd_cmd(0b00000001);
     lcd_setCursor(0,0);
     
+    
     char possibleVals[32][32] = {
 "00000000111101110011100011000111",
 "00000000111101111011100001000111",
@@ -309,6 +274,8 @@ void decrypt(void) {
             numMatch = 0;
     }//when this breaks, the button pressed should be the value of a..
     
+    if(a < 32)
+        LATBbits.LATB7 = 1;
     
     switch(a){
         case 0:
@@ -326,11 +293,13 @@ void decrypt(void) {
         
         case 3:
             lcd_printStr("Btn 3");
+            dynamicFctn = 's';
             break;
         
         case 4:
             lcd_printStr("Btn 4");
             writeColorToPanel(previousPanel, red);
+            dynamicFctn = 'a';
             break;
         
         case 5:
@@ -366,7 +335,8 @@ void decrypt(void) {
         case 11:
             lcd_printStr("Btn 11");
 //            rainbow();
-            rainbowFunction = 1;
+//            rainbowFunction = 1;
+            dynamicFctn = 'g';
             break;
 
         case 12:
@@ -386,6 +356,7 @@ void decrypt(void) {
 
         case 15:
             lcd_printStr("Btn 15");
+            dynamicFctn = 'f';
             break;
 
         case 16:
@@ -428,14 +399,19 @@ void decrypt(void) {
 
         case 24:
             lcd_printStr("Btn 24");
+            asynWaveSetup();
+            dynamicFctn = 'y';
             break;
 
         case 25:
             lcd_printStr("Btn 25");
+            dynamicFctn = 'v';
             break;
 
         case 26:
             lcd_printStr("Btn 26");
+            twinkleSetup();
+            dynamicFctn = 't';
             break;
 
         case 27:
@@ -466,7 +442,13 @@ void decrypt(void) {
             lcd_printStr("notFound");
             break;
     }
+    if((a < 11 && a > 3) || (a < 15 && a > 11) || (a < 19 && a > 15) || (a < 23 && a > 19)){
+        dynamicFctn = 'a';
+    }
+    
+    
     delay_ms(1000);
+    LATBbits.LATB7 = 0;
     
     
     lcd_cmd(0b00000001);
@@ -494,5 +476,5 @@ void decrypt(void) {
 //    }
 //    delay_ms(1000);
 //    lcd_cmd(0b00000001);
-    
+
 }

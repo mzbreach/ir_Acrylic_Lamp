@@ -12,90 +12,97 @@
 extern "C" {
 #endif
     
+#define ARRAY_SIZE 27
 extern int panel; // Change this to change the LED strip
 
 // These are the colors (kind of, not really) that should be used as parameters in combination with "panel"
 // With these two parameters, it is a matter of calling functions to produce the correct combination/event
 // Currently these color arrays have not been tested, so some colors might not be accurate
+extern int color[ARRAY_SIZE];
+extern int green[ARRAY_SIZE];
+extern int red[ARRAY_SIZE];
+extern int blue[ARRAY_SIZE];
+extern int white[ARRAY_SIZE];
 
-extern int green[27];
-extern int red[27];
-extern int blue[27];
-extern int white[27];
+extern int red_orange[ARRAY_SIZE];
+extern int light_green[ARRAY_SIZE];
+extern int light_blue[ARRAY_SIZE];
 
-extern int red_orange[27];
-extern int light_green[27];
-extern int light_blue[27];
+extern int orange[ARRAY_SIZE];
+extern int cyan[ARRAY_SIZE];
+extern int purple[ARRAY_SIZE];
 
-extern int orange[27];
-extern int cyan[27];
-extern int purple[27];
+extern int light_orange[ARRAY_SIZE];
+extern int dark_blue[ARRAY_SIZE];
+extern int magenta[ARRAY_SIZE];
 
-extern int light_orange[27];
-extern int dark_blue[27];
-extern int magenta[27];
+extern int yellow[ARRAY_SIZE];
+extern int faint_blue[ARRAY_SIZE];
+extern int pink[ARRAY_SIZE];
+extern int off[ARRAY_SIZE];
 
-extern int yellow[27];
-extern int faint_blue[27];
-extern int pink[27];
-extern int off[27];
+extern int speed1[ARRAY_SIZE];
+extern int speed2[ARRAY_SIZE];
 
-extern int speed1[27];
-extern int speed2[27];
+extern int twinkle1[ARRAY_SIZE];
+extern int twinkle2[ARRAY_SIZE];
+extern int twinkleRestore[ARRAY_SIZE];
 
-extern int twinkle1[27];
-extern int twinkle2[27];
-extern int twinkleRestore[27];
+extern int invert1[ARRAY_SIZE];
 
-extern int invert1[27];
+extern int wave1[ARRAY_SIZE];
+extern int wave2[ARRAY_SIZE];
+extern int wave3[ARRAY_SIZE];
+extern int wave4[ARRAY_SIZE];
+extern int wave5[ARRAY_SIZE];
 
-extern int wave1[27];
-extern int wave2[27];
-extern int wave3[27];
-extern int wave4[27];
-extern int wave5[27];
-
-extern int asynWave1[27];
-extern int asynWave2[27];
-extern int asynWave3[27];
-extern int asynWave4[27];
-extern int asynWave5[27];
-extern int asynWave6[27];
-extern int asynWave7[27];
-extern int asynWave8[27];
+extern int asynWave1[ARRAY_SIZE];
+extern int asynWave2[ARRAY_SIZE];
+extern int asynWave3[ARRAY_SIZE];
+extern int asynWave4[ARRAY_SIZE];
+extern int asynWave5[ARRAY_SIZE];
+extern int asynWave6[ARRAY_SIZE];
+extern int asynWave7[ARRAY_SIZE];
+extern int asynWave8[ARRAY_SIZE];
 
 // Testing LED strip color arrays
 // Set one of these equal to a pre-made color array for easy access to colors
 // For example, "memcpy(grb1, green, sizeof(grb1));" will output green to LED Strip 1
 
-extern int grb1[27];
-extern int grb2[27];
-extern int grb3[27];
+extern int grb1[ARRAY_SIZE];
+extern int grb2[ARRAY_SIZE];
+extern int grb3[ARRAY_SIZE];
 extern int previousPanel;
-extern int previousColor[27];
+extern int previousColor[ARRAY_SIZE];
 
 // These arrays hold the converted values of the 27-element color array into the binary representation for easy access
 // to writing HIGH or LOW to the LED pixels to actually output the correct color for each LED
 
-extern int binaryGRB1[648];
-extern int binaryGRB2[648];
-extern int binaryGRB3[648];
+extern int binaryGRB1[ARRAY_SIZE * 24];
+extern int binaryGRB2[ARRAY_SIZE * 24];
+extern int binaryGRB3[ARRAY_SIZE * 24];
 
 extern int check;
+extern char dynamicFctn;
 
 void convertDecToBin(int grb[], int binaryGRB[]);
 void writeBinToLED1(int binaryGRB[]);
 void writeBinToLED2(int binaryGRB[]);
 void writeBinToLED3(int binaryGRB[]);
 void wait(int ms);
+void masterStaticColorCreator(int state);
 void writeColorToPanel(int panel, int color[]);
-void rainbow(void);
+void rainbow(int state);
+void speed(int state);
+void invertSetup(void);
 void invert(void);
-void twinkle(void);
-void seizure(void);
+void twinkleSetup(void);
+void twinkle(int state);
+void seizure(int state);
 void fade();
 void wave(void);
-void asynWave(void);
+void asynWaveSetup(void);
+void asynWave(int state);
 void LedStrip_Setup(void);
 
 

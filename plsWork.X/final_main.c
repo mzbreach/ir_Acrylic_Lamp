@@ -27,6 +27,7 @@
 void initPIC24(void){
     CLKDIVbits.RCDIV=0;
     AD1PCFG = 0x9FFF;
+    SRbits.IPL = 0;
 }
 
 
@@ -56,5 +57,9 @@ int main(void) {
 //    ledTest();
         
     while(1);
+//    
+//    while(1){
+//        asm("nop");
+//    }
     return 0;
 }
