@@ -284,7 +284,7 @@ void decrypt(void) {
         
         case 1:
             lcd_printStr("Btn 1");
-            writeColorToPanel(previousPanel, off);
+//            writeColorToPanel(previousPanel, off);
             break;
 
         case 2:
@@ -298,38 +298,36 @@ void decrypt(void) {
         
         case 4:
             lcd_printStr("Btn 4");
-            writeColorToPanel(previousPanel, red);
             dynamicFctn = 'a';
             break;
         
         case 5:
             lcd_printStr("Btn 5");
-            writeColorToPanel(previousPanel, green);
             break;
         
         case 6:
             lcd_printStr("Btn 6");
-            writeColorToPanel(previousPanel, blue);
+//            writeColorToPanel(previousPanel, blue);
             break;
 
         case 7:
             lcd_printStr("Btn 7");
-            writeColorToPanel(previousPanel, white);
+//            writeColorToPanel(previousPanel, white);
             break;
 
         case 8:
             lcd_printStr("Btn 8");
-            writeColorToPanel(previousPanel, red_orange);
+//            writeColorToPanel(previousPanel, red_orange);
             break;
 
         case 9:
             lcd_printStr("Btn 9");
-            writeColorToPanel(previousPanel, light_green);
+//            writeColorToPanel(previousPanel, light_green);
             break;
 
         case 10:
             lcd_printStr("Btn 10");
-            writeColorToPanel(previousPanel, light_blue);
+//            writeColorToPanel(previousPanel, light_blue);
             break;
             
         case 11:
@@ -341,17 +339,17 @@ void decrypt(void) {
 
         case 12:
             lcd_printStr("Btn 12");
-            writeColorToPanel(previousPanel, orange);
+//            writeColorToPanel(previousPanel, orange);
             break;
 
         case 13:
             lcd_printStr("Btn 13");
-            writeColorToPanel(previousPanel, cyan);
+//            writeColorToPanel(previousPanel, cyan);
             break;
 
         case 14:
             lcd_printStr("Btn 14");
-            writeColorToPanel(previousPanel, purple);
+//            writeColorToPanel(previousPanel, purple);
             break;
 
         case 15:
@@ -361,17 +359,17 @@ void decrypt(void) {
 
         case 16:
             lcd_printStr("Btn 16");
-            writeColorToPanel(previousPanel, light_orange);
+//            writeColorToPanel(previousPanel, light_orange);
             break;
 
         case 17:
             lcd_printStr("Btn 17");
-            writeColorToPanel(previousPanel, dark_blue);
+//            writeColorToPanel(previousPanel, dark_blue);
             break;
 
         case 18:
             lcd_printStr("Btn 18");
-            writeColorToPanel(previousPanel, magenta);
+//            writeColorToPanel(previousPanel, magenta);
             break;
 
         case 19:
@@ -380,17 +378,17 @@ void decrypt(void) {
 
         case 20:
             lcd_printStr("Btn 20");
-            writeColorToPanel(previousPanel, yellow);
+//            writeColorToPanel(previousPanel, yellow);
             break;
 
         case 21:
             lcd_printStr("Btn 21");
-            writeColorToPanel(previousPanel, faint_blue);
+//            writeColorToPanel(previousPanel, faint_blue);
             break;
 
         case 22:
             lcd_printStr("Btn 22");
-            writeColorToPanel(previousPanel, pink);
+//            writeColorToPanel(previousPanel, pink);
             break;
 
         case 23:
@@ -444,8 +442,11 @@ void decrypt(void) {
             lcd_printStr("notFound");
             break;
     }
-    if((a < 11 && a > 3) || (a < 15 && a > 11) || (a < 19 && a > 15) || (a < 23 && a > 19)){
+    if((a == 1) || (a < 11 && a > 3) || (a < 15 && a > 11) || (a < 19 && a > 15) || (a < 23 && a > 19)){
         dynamicFctn = 'a';
+        masterStaticColorCreator(a);
+        writeColorToPanel(previousPanel, staticColor);
+
     }
     
     

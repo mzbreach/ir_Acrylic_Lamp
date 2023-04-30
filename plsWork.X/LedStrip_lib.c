@@ -91,7 +91,7 @@ volatile int asynWaveCounter = 0;
 volatile int fadeCounter = 0;
 volatile int waveCounter = 0;
 
-volatile int fadeColor[ARRAY_SIZE] = {0};
+volatile int fadeColor[27] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 volatile int fadeR = 0;
 
 void LedStrip_Setup(void){
