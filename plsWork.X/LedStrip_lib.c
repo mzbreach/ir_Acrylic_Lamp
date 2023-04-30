@@ -14,27 +14,27 @@ int panel = 0; // Change this to change the LED strip
 // Currently these color arrays have not been tested, so some colors might not be accurate
 int color[ARRAY_SIZE] = {0};
 int staticColor[ARRAY_SIZE] = {0};
-int green[ARRAY_SIZE] = {255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0};
-int red[ARRAY_SIZE] = {0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0};
-int blue[ARRAY_SIZE] = {0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255};
-int white[ARRAY_SIZE] = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255};
-
-int red_orange[ARRAY_SIZE] = {15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0};
-int light_green[ARRAY_SIZE] = {255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20};
-int light_blue[ARRAY_SIZE] = {80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255};
-
-int orange[ARRAY_SIZE] = {30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0,};
-int cyan[ARRAY_SIZE] = {255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255};
-int purple[ARRAY_SIZE] = {0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255};
-
-int light_orange[ARRAY_SIZE] = {50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0};
-int dark_blue[ARRAY_SIZE] = {0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75,};
-int magenta[ARRAY_SIZE] = {0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255};
-
-int yellow[ARRAY_SIZE] = {255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0};
-int faint_blue[ARRAY_SIZE] = {0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15};
-int pink[ARRAY_SIZE] = {0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127};
-int off[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+//int green[ARRAY_SIZE] = {255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0};
+//int red[ARRAY_SIZE] = {0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0};
+//int blue[ARRAY_SIZE] = {0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255};
+//int white[ARRAY_SIZE] = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255};
+//
+//int red_orange[ARRAY_SIZE] = {15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0};
+//int light_green[ARRAY_SIZE] = {255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20};
+//int light_blue[ARRAY_SIZE] = {80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255};
+//
+//int orange[ARRAY_SIZE] = {30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0,};
+//int cyan[ARRAY_SIZE] = {255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255};
+//int purple[ARRAY_SIZE] = {0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255};
+//
+//int light_orange[ARRAY_SIZE] = {50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0};
+//int dark_blue[ARRAY_SIZE] = {0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75,};
+//int magenta[ARRAY_SIZE] = {0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255};
+//
+//int yellow[ARRAY_SIZE] = {255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0};
+//int faint_blue[ARRAY_SIZE] = {0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15};
+//int pink[ARRAY_SIZE] = {0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127};
+int off[ARRAY_SIZE] = {0};
 
 int speed1[ARRAY_SIZE] = {0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 50, 50, 50, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255};
 int speed2[ARRAY_SIZE] = {0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 50, 50, 50, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0};
@@ -334,7 +334,7 @@ void masterStaticColorCreator(int state){
         case 8: // orange
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    staticColor[i] = 128;
+                    staticColor[i] = 15;
                 }  
                 else if (i % 3 == 1) {
                     staticColor[i] = 255;
@@ -351,18 +351,18 @@ void masterStaticColorCreator(int state){
                     staticColor[i] = 255;
                 }  
                 else if (i % 3 == 1) {
-                    staticColor[i] = 51;
+                    staticColor[i] = 0;
                 }
                 else {
-                    staticColor[i] = 51;
+                    staticColor[i] = 20;
                 }
             }
             break;
             
-        case 10: // electric_blue
+        case 10: // light_blue
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    staticColor[i] = 128;
+                    staticColor[i] = 80;
                 }  
                 else if (i % 3 == 1) {
                     staticColor[i] = 0;
@@ -373,16 +373,16 @@ void masterStaticColorCreator(int state){
             }
             break;
             
-        case 12: // light_orange
+        case 12: // orange
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    staticColor[i] = 153;
+                    staticColor[i] = 30;
                 }  
                 else if (i % 3 == 1) {
                     staticColor[i] = 255;
                 }
                 else {
-                    staticColor[i] = 51;
+                    staticColor[i] = 0;
                 }
             }
             break;
@@ -415,16 +415,16 @@ void masterStaticColorCreator(int state){
             }
             break;
             
-        case 16: // lighter_orange
+        case 16: // light_orange
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    staticColor[i] = 178;
+                    staticColor[i] = 50;
                 }  
                 else if (i % 3 == 1) {
                     staticColor[i] = 255;
                 }
                 else {
-                    staticColor[i] = 102;
+                    staticColor[i] = 0;
                 }
             }
             break;
@@ -432,13 +432,13 @@ void masterStaticColorCreator(int state){
         case 17: // dark_blue
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    staticColor[i] = 51;
+                    staticColor[i] = 0;
                 }  
                 else if (i % 3 == 1) {
-                    staticColor[i] = 51;
+                    staticColor[i] = 0;
                 }
                 else {
-                    staticColor[i] = 255;
+                    staticColor[i] = 75;
                 }
             }
             break;
@@ -471,16 +471,16 @@ void masterStaticColorCreator(int state){
             }
             break;
             
-        case 21: // turqoise
+        case 21: // faint_blue
             for (i = 0; i < ARRAY_SIZE; i++) {
                 if (i % 3 == 0) {
-                    staticColor[i] = 255;
+                    staticColor[i] = 0;
                 }  
                 else if (i % 3 == 1) {
                     staticColor[i] = 0;
                 }
                 else {
-                    staticColor[i] = 128;
+                    staticColor[i] = 15;
                 }
             }
             break;
@@ -564,51 +564,52 @@ void writeColorToPanel(int panel, int color[]){
 void rainbow(int state) {
     switch (state){
         case 0:
-            writeColorToPanel(previousPanel, red);
+            masterStaticColorCreator(4);//red
             break;
         case 1:
-            writeColorToPanel(previousPanel, red_orange);
+            masterStaticColorCreator(8);//red_orange
             break;
         case 2:
-            writeColorToPanel(previousPanel, orange);
+            masterStaticColorCreator(12);//orange
             break;
         case 3:
-            writeColorToPanel(previousPanel, light_orange);
+            masterStaticColorCreator(16);//light_orange
             break;
         case 4:
-            writeColorToPanel(previousPanel, yellow);
+            masterStaticColorCreator(20);//yellow
             break;
         case 5:
-            writeColorToPanel(previousPanel, green);
+            masterStaticColorCreator(5);//green
             break;
         case 6:
-            writeColorToPanel(previousPanel, light_green);
+            masterStaticColorCreator(9);//light_green
             break;
         case 7:
-            writeColorToPanel(previousPanel, cyan);
+            masterStaticColorCreator(13);//cyan
             break;
         case 8:
-            writeColorToPanel(previousPanel, light_blue);
+            masterStaticColorCreator(10);//light_blue
             break;
         case 9:
-            writeColorToPanel(previousPanel, blue);
+            masterStaticColorCreator(6);//blue
             break;
         case 10:
-            writeColorToPanel(previousPanel, dark_blue);
+            masterStaticColorCreator(17);//dark_blue
             break;
         case 11:
-            writeColorToPanel(previousPanel, purple);
+            masterStaticColorCreator(14);//purple
             break;
         case 12:
-            writeColorToPanel(previousPanel, magenta);
+            masterStaticColorCreator(18);//magenta
             break;
         case 13:
-            writeColorToPanel(previousPanel, pink);
+            masterStaticColorCreator(22);//pink
             break;
         default:
             
             break;
     }
+    writeColorToPanel(previousPanel, staticColor);
 }
 
 void speed(int state) {
