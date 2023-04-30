@@ -87,6 +87,7 @@ volatile int speedCounter = 0;
 volatile int seizureCounter = 0;
 volatile int twinkleCounter = 0;
 volatile int asynWaveCounter = 0;
+volatile int fadeCounter = 0;
 
 volatile int fadeColor[27] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 volatile int fadeR = 0;
@@ -162,14 +163,18 @@ void __attribute__((interrupt, auto_psv)) _T1Interrupt(){//ideally should trigge
             break;
             
         case 'f'://fade
-            fade();
-            LEDOverflow = 0;
+            if(LEDOverflow >= 10){
+                fade(fadeCounter);
+                fadeCounter = (fadeCounter + 1) % 3;
+                LEDOverflow = 0;
+            }
             break;
             
         case 'i'://invert
             invert();
             LEDOverflow = 1;
             break;
+            
             
         default:
             break;
@@ -719,56 +724,64 @@ void seizure(int state) {
     }
 }
 
-void fade(){
+void fade(int state){
     int i, j;
 
-    for(i = 0; i < 255; i++) {
-        for (j = 0; j <= ARRAY_SIZE - 2; j+=3){
-            fadeColor[j] = fadeR;
-        }
-        writeColorToPanel(previousPanel, fadeColor);
-        fadeR++; 
-    } 
-    for(i = 255; i > 0; i--) {
-        for (j = 0; j <= ARRAY_SIZE - 2; j+=3){
-            fadeColor[j] = fadeR;
-        }
-        writeColorToPanel(previousPanel, fadeColor);
+    switch (state) {
+        case 0: 
+            for(i = 1; i < 255; i+= 2) {
+                for (j = 0; j <= 25; j+=3){
+                    fadeColor[j] = i;
+                }
+                writeColorToPanel(previousPanel, fadeColor);
 
-        fadeR--;
+            } 
+            for(i = 255; i > 0; i -=2) {
+                for (j = 0; j <= 25; j+=3){
+                    fadeColor[j] = i;
+                }
+                writeColorToPanel(previousPanel, fadeColor);
+            }
+            break;
+            
+        case 1:
+            for(i = 1; i < 255; i+=2) {
+                for (j = 1; j <= 26; j+=3){
+                    fadeColor[j] = i;
+                }
+                writeColorToPanel(previousPanel, fadeColor);
+            } 
+
+            for(i = 255; i > 1; i-=2) {
+                for (j = 1; j <= 26; j+=3){
+                    fadeColor[j] = i;
+                }
+                writeColorToPanel(previousPanel, fadeColor);
+            }
+            break;
+
+        case 2:
+            for(i = 1; i < 255; i+=2) {
+                for (j = 2; j <= 27; j+=3){
+                    fadeColor[j] = i;
+                }
+                writeColorToPanel(previousPanel, fadeColor);
+            } 
+            for(i = 255; i > 1; i-=2) {
+                for (j = 2; j <= 27; j+=3){
+                    fadeColor[j] = i;
+                }
+                writeColorToPanel(previousPanel, fadeColor);
+            }
+
+            break;
+        default:
+            break;
     }
+}
 
-
-    for(i = 0; i < 255; i++) {
-        for (j = 1; j <= ARRAY_SIZE - 1; j+=3){
-            fadeColor[j] = fadeR;
-        }
-        writeColorToPanel(previousPanel, fadeColor);
-        fadeR++; 
-    } 
-    for(i = 255; i > 0; i--) {
-        for (j = 1; j <= ARRAY_SIZE - 1; j+=3){
-            fadeColor[j] = fadeR;
-        }
-        writeColorToPanel(previousPanel, fadeColor);
-
-        fadeR--;
-    }
-    for(i = 0; i < 255; i++) {
-        for (j = 2; j <= ARRAY_SIZE; j+=3){
-            fadeColor[j] = fadeR;
-        }
-        writeColorToPanel(previousPanel, fadeColor);
-        fadeR++; 
-    } 
-    for(i = 255; i > 0; i--) {
-        for (j = 2; j <= ARRAY_SIZE; j+=3){
-            fadeColor[j] = fadeR;
-        }
-        writeColorToPanel(previousPanel, fadeColor);
-
-        fadeR--;
-    }
+void waveSetup(void){
+    
 }
 
 void wave(void) {
@@ -822,36 +835,6 @@ void wave(void) {
         wait(200);
     }
 }
-
-//void fade() {
-//    int G = 0;
-//    int R = 0;
-//    int B = 0;
-//
-//    int i = 0;
-//
-//    int color[27] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-//
-//
-//    int j = 0;
-//
-//    while(1) {
-//        for(i = 0; i < 255; i++) {
-//            for (j = 0; j <= 25; j+=3){
-//                color[j] = R;
-//            }
-//            writeColorToPanel(previousPanel, color);
-//            R++; 
-//        } 
-//        for(i = 255; i > 0; i--) {
-//            for (j = 0; j <= 25; j+=3){
-//                color[j] = R;
-//            }
-//            writeColorToPanel(previousPanel, color);
-//
-//            R--;
-//        }
-
 
 void asynWaveSetup(void){
     int i = 0;
