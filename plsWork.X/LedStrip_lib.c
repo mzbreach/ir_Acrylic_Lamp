@@ -14,26 +14,6 @@ int panel = 0; // Change this to change the LED strip
 // Currently these color arrays have not been tested, so some colors might not be accurate
 int color[ARRAY_SIZE] = {0};
 int staticColor[ARRAY_SIZE] = {0};
-//int green[ARRAY_SIZE] = {255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0};
-//int red[ARRAY_SIZE] = {0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0};
-//int blue[ARRAY_SIZE] = {0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255};
-//int white[ARRAY_SIZE] = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255};
-//
-//int red_orange[ARRAY_SIZE] = {15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0, 15, 255, 0};
-//int light_green[ARRAY_SIZE] = {255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20, 255, 0, 20};
-//int light_blue[ARRAY_SIZE] = {80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255, 80, 0, 255};
-//
-//int orange[ARRAY_SIZE] = {30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0, 30, 255, 0,};
-//int cyan[ARRAY_SIZE] = {255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255};
-//int purple[ARRAY_SIZE] = {0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255, 0, 127, 255};
-//
-//int light_orange[ARRAY_SIZE] = {50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0, 50, 255, 0};
-//int dark_blue[ARRAY_SIZE] = {0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75, 0, 0, 75,};
-//int magenta[ARRAY_SIZE] = {0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255};
-//
-//int yellow[ARRAY_SIZE] = {255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0};
-//int faint_blue[ARRAY_SIZE] = {0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15, 0, 0, 15};
-//int pink[ARRAY_SIZE] = {0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127, 0, 255, 127};
 int off[ARRAY_SIZE] = {0};
 
 int speed1[ARRAY_SIZE] = {0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 50, 50, 50, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255};
@@ -94,6 +74,9 @@ volatile int waveCounter = 0;
 volatile int fadeColor[27] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 volatile int fadeR = 0;
 
+/* LED strip setup fnction
+ */
+
 void LedStrip_Setup(void){
     
     TRISA = 0b1111111111100000;  //and port A to outputs
@@ -115,6 +98,9 @@ void LedStrip_Setup(void){
     
 }
 
+/* This ISR handles the dynamic functions - allows them to activate on their required
+ * delays in 10ms oeriods
+ */
 
 void __attribute__((interrupt, auto_psv)) _T1Interrupt(){//ideally should trigger once every 10ms
     _T1IF = 0;
@@ -274,6 +260,11 @@ void wait(int ms){
     }
 }
 
+/* this function works to edit the volatile staticColor array such that it 
+ * stores the appropriate color before calling writeColorToPanel
+ * 
+ * This function works for n number of LEDs (as defined by ARRAY_SIZE / n)
+ */
 void masterStaticColorCreator(int state){
     int i;
     switch(state) {
@@ -612,6 +603,9 @@ void rainbow(int state) {
     writeColorToPanel(previousPanel, staticColor);
 }
 
+/* Speed function
+ */
+
 void speed(int state) {
     switch (state){
         case 0:
@@ -644,6 +638,9 @@ void speed(int state) {
     }
 }
 
+/*Invert setup - call once every time button is pressed
+ */
+
 void invertSetup(void){
     int i = 0;
     memcpy(invert1, previousColor, sizeof(invert1));
@@ -655,10 +652,14 @@ void invertSetup(void){
     }
 }
 
+/*Invert function
+ */
 void invert(void) {
     writeColorToPanel(previousPanel, invert1);
 }
 
+/* Twinkle setup function - call once every time button is pressed
+ */
 void twinkleSetup(void){//called once every time twinkle is initialized
     int i = 0;
     memcpy(twinkle2, previousColor, sizeof(twinkleRestore));
@@ -673,6 +674,8 @@ void twinkleSetup(void){//called once every time twinkle is initialized
     memcpy(twinkleRestore, previousColor, sizeof(twinkleRestore));
 }
 
+/* Twinkle function
+ */
 void twinkle(int state) {
     switch(state){
         case 0:
@@ -738,6 +741,9 @@ void seizure(int state) {
     }
 }
 
+/* Fade function - a little scuffed, but it works
+ */
+
 void fade(int state){
     int i, j;
 
@@ -794,6 +800,9 @@ void fade(int state){
     }
 }
 
+/*Wave setup - call once every time wave button is pressed
+ */
+
 void waveSetup(void){
     int i = 0;
     memcpy(wave1, previousColor, sizeof(wave1));
@@ -826,6 +835,9 @@ void waveSetup(void){
         }
     }
 }
+
+/*Wave function
+ */
 
 void wave(int state) {
     switch(state){
@@ -865,6 +877,10 @@ void wave(int state) {
             break;
     }
 }
+
+/*
+ * Asyn wave setup function - call once every time this button is pressed
+ */
 
 void asynWaveSetup(void){
     int i = 0;
@@ -963,6 +979,10 @@ void asynWaveSetup(void){
         }
 }
 
+/*
+ * Wave function for the asyncrounous wave
+ */
+
 void asynWave(int state) {
     switch (state) {
         case 0:
@@ -1025,32 +1045,3 @@ void asynWave(int state) {
             break;
     }
 }
-
-/* This function sets up the PIC24FJ64GA002 as needed. Note that the necessary
- RAx pins must be activated in this function. */
-
-
-
-///* This is a standard main function to control the operation of the lamp xD */
-//
-//int main() {
-//    setup();
-//    previousPanel = 1;
-//    writeColorToPanel(previousPanel, blue);
-//    previousPanel = 2;
-//    writeColorToPanel(previousPanel, green);
-//    previousPanel = 3;
-//    writeColorToPanel(previousPanel, red);
-//    previousPanel = 4;
-//    asynWave();
-//    //rainbow();
-//    //previousPanel = 4;
-//    //rainbow();
-//    //wait(500);
-//    //fade();
-//    //invert();
-//    //writeColorToPanel(4, blue);
-//    
-//    
-//    while(1);
-//}

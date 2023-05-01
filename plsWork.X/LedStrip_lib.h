@@ -20,26 +20,6 @@ extern int panel; // Change this to change the LED strip
 // Currently these color arrays have not been tested, so some colors might not be accurate
 extern int color[ARRAY_SIZE];
 extern int staticColor[ARRAY_SIZE];
-extern int green[ARRAY_SIZE];
-extern int red[ARRAY_SIZE];
-extern int blue[ARRAY_SIZE];
-extern int white[ARRAY_SIZE];
-
-extern int red_orange[ARRAY_SIZE];
-extern int light_green[ARRAY_SIZE];
-extern int light_blue[ARRAY_SIZE];
-
-extern int orange[ARRAY_SIZE];
-extern int cyan[ARRAY_SIZE];
-extern int purple[ARRAY_SIZE];
-
-extern int light_orange[ARRAY_SIZE];
-extern int dark_blue[ARRAY_SIZE];
-extern int magenta[ARRAY_SIZE];
-
-extern int yellow[ARRAY_SIZE];
-extern int faint_blue[ARRAY_SIZE];
-extern int pink[ARRAY_SIZE];
 extern int off[ARRAY_SIZE];
 
 extern int speed1[ARRAY_SIZE];

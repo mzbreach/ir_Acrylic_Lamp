@@ -78,11 +78,11 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x60e           0x915  (2325)
 .const                       0x80e               0x4ee           0x765  (1893)
-.text                        0xcfc              0x166c          0x21a2  (8610)
-.dinit                      0x2368                0x7a            0xb7  (183)
-.text                       0x23e2                0x46            0x69  (105)
+.text                        0xcfc              0x172c          0x22c2  (8898)
+.dinit                      0x2428                0x7a            0xb7  (183)
+.text                       0x24a2                0x46            0x69  (105)
 
-                 Total "program" memory used (bytes):         0x333c  (13116) 20%
+                 Total "program" memory used (bytes):         0x345c  (13404) 20%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x2000]
@@ -236,8 +236,8 @@ External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x00023c                  __psv_init
-                  0x000252                  __data_init
                   0x000252                  __data_init_standard
+                  0x000252                  __data_init
                   0x0002d0                  __T2Interrupt
                   0x00030a                  __IC1Interrupt
                   0x0004bc                  __T1Interrupt
@@ -269,27 +269,28 @@ External Symbols in Program Memory (by address):
                   0x001e62                  _ledTest
                   0x001ea6                  _IR_Setup
                   0x001f24                  _TesterLEDSetup
-                  0x001f2e                  _decrypt
-                  0x00216e                  _lcd_init
-                  0x0021c4                  _lcd_cmd
-                  0x002216                  _delay_ms
-                  0x002236                  _lcd_printChar
-                  0x002288                  _lcd_setCursor
-                  0x0022a4                  _lcd_printStr
-                  0x0022d2                  _moveRight
-                  0x0022dc                  _moveLeft
-                  0x0022e6                  _write_0
-                  0x0022f4                  _write_1
-                  0x002302                  _write_0_p2
-                  0x002312                  _write_1_p2
-                  0x002322                  _write_0_p3
-                  0x002332                  _write_1_p3
-                  0x002342                  _write_0i
-                  0x002350                  _write_1i
-                  0x00235c                  _wait_100us
-                  0x002362                  _wait_1ms
-                  0x0023e2                  _initPIC24
-                  0x0023fc                  _main
+                  0x001f2e                  _displayDecypher
+                  0x001fee                  _decrypt
+                  0x00222e                  _lcd_init
+                  0x002284                  _lcd_cmd
+                  0x0022d6                  _delay_ms
+                  0x0022f6                  _lcd_printChar
+                  0x002348                  _lcd_setCursor
+                  0x002364                  _lcd_printStr
+                  0x002392                  _moveRight
+                  0x00239c                  _moveLeft
+                  0x0023a6                  _write_0
+                  0x0023b4                  _write_1
+                  0x0023c2                  _write_0_p2
+                  0x0023d2                  _write_1_p2
+                  0x0023e2                  _write_0_p3
+                  0x0023f2                  _write_1_p3
+                  0x002402                  _write_0i
+                  0x002410                  _write_1i
+                  0x00241c                  _wait_100us
+                  0x002422                  _wait_1ms
+                  0x0024a2                  _initPIC24
+                  0x0024bc                  _main
 
 External Symbols in Program Memory (by name):
 
@@ -309,23 +310,24 @@ External Symbols in Program Memory (by name):
                   0x001dbc                  _asynWave
                   0x001a84                  _asynWaveSetup
                   0x000d38                  _convertDecToBin
-                  0x001f2e                  _decrypt
-                  0x002216                  _delay_ms
+                  0x001fee                  _decrypt
+                  0x0022d6                  _delay_ms
+                  0x001f2e                  _displayDecypher
                   0x0017a0                  _fade
-                  0x0023e2                  _initPIC24
+                  0x0024a2                  _initPIC24
                   0x00164a                  _invert
                   0x0015ee                  _invertSetup
-                  0x0021c4                  _lcd_cmd
-                  0x00216e                  _lcd_init
-                  0x002236                  _lcd_printChar
-                  0x0022a4                  _lcd_printStr
-                  0x002288                  _lcd_setCursor
+                  0x002284                  _lcd_cmd
+                  0x00222e                  _lcd_init
+                  0x0022f6                  _lcd_printChar
+                  0x002364                  _lcd_printStr
+                  0x002348                  _lcd_setCursor
                   0x001e62                  _ledTest
-                  0x0023fc                  _main
+                  0x0024bc                  _main
                   0x000e8a                  _masterStaticColorCreator
                   0x0007d0                  _memcpy
-                  0x0022dc                  _moveLeft
-                  0x0022d2                  _moveRight
+                  0x00239c                  _moveLeft
+                  0x002392                  _moveRight
                   0x0014ec                  _rainbow
                   0x00177c                  _seizure
                   0x00157c                  _speed
@@ -333,22 +335,22 @@ External Symbols in Program Memory (by name):
                   0x0016ba                  _twinkle
                   0x001656                  _twinkleSetup
                   0x000e68                  _wait
-                  0x00235c                  _wait_100us
-                  0x002362                  _wait_1ms
+                  0x00241c                  _wait_100us
+                  0x002422                  _wait_1ms
                   0x001a12                  _wave
                   0x001924                  _waveSetup
                   0x000dd8                  _writeBinToLED1
                   0x000e08                  _writeBinToLED2
                   0x000e38                  _writeBinToLED3
                   0x001440                  _writeColorToPanel
-                  0x0022e6                  _write_0
-                  0x002302                  _write_0_p2
-                  0x002322                  _write_0_p3
-                  0x002342                  _write_0i
-                  0x0022f4                  _write_1
-                  0x002312                  _write_1_p2
-                  0x002332                  _write_1_p3
-                  0x002350                  _write_1i
+                  0x0023a6                  _write_0
+                  0x0023c2                  _write_0_p2
+                  0x0023e2                  _write_0_p3
+                  0x002402                  _write_0i
+                  0x0023b4                  _write_1
+                  0x0023d2                  _write_1_p2
+                  0x0023f2                  _write_1_p3
+                  0x002410                  _write_1i
 
 Memory Configuration
 
@@ -438,40 +440,40 @@ __CONFIG1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x2fae
+.debug_info       0x000000       0x2ffd
  *(.debug_info)
  .debug_info      0x000000        0x517 build/default/production/I2C_LCD.o
- .debug_info      0x000517       0x12db build/default/production/IR_lib.o
- .debug_info      0x0017f2        0x3ea build/default/production/final_main.o
- .debug_info      0x001bdc       0x12b3 build/default/production/LedStrip_lib.o
- .debug_info      0x002e8f         0x92 build/default/production/asm_lib.o
- .debug_info      0x002f21         0x8d c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umuldi3.XX_o)
+ .debug_info      0x000517       0x132c build/default/production/IR_lib.o
+ .debug_info      0x001843        0x3ea build/default/production/final_main.o
+ .debug_info      0x001c2d       0x12b1 build/default/production/LedStrip_lib.o
+ .debug_info      0x002ede         0x92 build/default/production/asm_lib.o
+ .debug_info      0x002f70         0x8d c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umuldi3.XX_o)
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x636
+.debug_abbrev     0x000000        0x627
  *(.debug_abbrev)
  .debug_abbrev    0x000000        0x120 build/default/production/I2C_LCD.o
- .debug_abbrev    0x000120        0x176 build/default/production/IR_lib.o
- .debug_abbrev    0x000296        0x12b build/default/production/final_main.o
- .debug_abbrev    0x0003c1        0x24d build/default/production/LedStrip_lib.o
- .debug_abbrev    0x00060e         0x14 build/default/production/asm_lib.o
- .debug_abbrev    0x000622         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umuldi3.XX_o)
+ .debug_abbrev    0x000120        0x167 build/default/production/IR_lib.o
+ .debug_abbrev    0x000287        0x12b build/default/production/final_main.o
+ .debug_abbrev    0x0003b2        0x24d build/default/production/LedStrip_lib.o
+ .debug_abbrev    0x0005ff         0x14 build/default/production/asm_lib.o
+ .debug_abbrev    0x000613         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umuldi3.XX_o)
 
-.debug_line       0x000000        0x957
+.debug_line       0x000000        0x96f
  *(.debug_line)
  .debug_line      0x000000        0x14d build/default/production/I2C_LCD.o
- .debug_line      0x00014d        0x1f6 build/default/production/IR_lib.o
- .debug_line      0x000343        0x11a build/default/production/final_main.o
- .debug_line      0x00045d        0x42d build/default/production/LedStrip_lib.o
- .debug_line      0x00088a         0x76 build/default/production/asm_lib.o
- .debug_line      0x000900         0x57 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umuldi3.XX_o)
+ .debug_line      0x00014d        0x20e build/default/production/IR_lib.o
+ .debug_line      0x00035b        0x11a build/default/production/final_main.o
+ .debug_line      0x000475        0x42d build/default/production/LedStrip_lib.o
+ .debug_line      0x0008a2         0x76 build/default/production/asm_lib.o
+ .debug_line      0x000918         0x57 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umuldi3.XX_o)
 
-.debug_frame      0x000000        0x4c2
+.debug_frame      0x000000        0x4dc
  *(.debug_frame)
  .debug_frame     0x000000         0xec build/default/production/I2C_LCD.o
- .debug_frame     0x0000ec        0x11a build/default/production/IR_lib.o
- .debug_frame     0x000206         0x48 build/default/production/final_main.o
- .debug_frame     0x00024e        0x274 build/default/production/LedStrip_lib.o
+ .debug_frame     0x0000ec        0x134 build/default/production/IR_lib.o
+ .debug_frame     0x000220         0x48 build/default/production/final_main.o
+ .debug_frame     0x000268        0x274 build/default/production/LedStrip_lib.o
 
 .debug_str        0x000000        0x295
  *(.debug_str)
@@ -487,16 +489,16 @@ __CONFIG1
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x5a9
+                  0x000000        0x5bd
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x88 build/default/production/I2C_LCD.o
  .debug_pubnames
-                  0x000088        0x13a build/default/production/IR_lib.o
+                  0x000088        0x14e build/default/production/IR_lib.o
  .debug_pubnames
-                  0x0001c2         0x29 build/default/production/final_main.o
+                  0x0001d6         0x29 build/default/production/final_main.o
  .debug_pubnames
-                  0x0001eb        0x3be build/default/production/LedStrip_lib.o
+                  0x0001ff        0x3be build/default/production/LedStrip_lib.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1239,7 +1241,7 @@ __c30_signature
  .const             0x880e        0x4e0 build/default/production/IR_lib.o
  .const             0x8cee          0xe build/default/production/final_main.o
 
-.text             0x000cfc       0x166c
+.text             0x000cfc       0x172c
  .text            0x000cfc       0x1166 build/default/production/LedStrip_lib.o
                   0x000cfc                  _LedStrip_Setup
                   0x000d38                  _convertDecToBin
@@ -1261,36 +1263,37 @@ __c30_signature
                   0x001a12                  _wave
                   0x001a84                  _asynWaveSetup
                   0x001dbc                  _asynWave
- .text            0x001e62        0x30c build/default/production/IR_lib.o
+ .text            0x001e62        0x3cc build/default/production/IR_lib.o
                   0x001e62                  _ledTest
                   0x001ea6                  _IR_Setup
                   0x001f24                  _TesterLEDSetup
-                  0x001f2e                  _decrypt
- .text            0x00216e        0x178 build/default/production/I2C_LCD.o
-                  0x00216e                  _lcd_init
-                  0x0021c4                  _lcd_cmd
-                  0x002216                  _delay_ms
-                  0x002236                  _lcd_printChar
-                  0x002288                  _lcd_setCursor
-                  0x0022a4                  _lcd_printStr
-                  0x0022d2                  _moveRight
-                  0x0022dc                  _moveLeft
- .text            0x0022e6         0x82 build/default/production/asm_lib.o
-                  0x0022e6                  _write_0
-                  0x0022f4                  _write_1
-                  0x002302                  _write_0_p2
-                  0x002312                  _write_1_p2
-                  0x002322                  _write_0_p3
-                  0x002332                  _write_1_p3
-                  0x002342                  _write_0i
-                  0x002350                  _write_1i
-                  0x00235c                  _wait_100us
-                  0x002362                  _wait_1ms
+                  0x001f2e                  _displayDecypher
+                  0x001fee                  _decrypt
+ .text            0x00222e        0x178 build/default/production/I2C_LCD.o
+                  0x00222e                  _lcd_init
+                  0x002284                  _lcd_cmd
+                  0x0022d6                  _delay_ms
+                  0x0022f6                  _lcd_printChar
+                  0x002348                  _lcd_setCursor
+                  0x002364                  _lcd_printStr
+                  0x002392                  _moveRight
+                  0x00239c                  _moveLeft
+ .text            0x0023a6         0x82 build/default/production/asm_lib.o
+                  0x0023a6                  _write_0
+                  0x0023b4                  _write_1
+                  0x0023c2                  _write_0_p2
+                  0x0023d2                  _write_1_p2
+                  0x0023e2                  _write_0_p3
+                  0x0023f2                  _write_1_p3
+                  0x002402                  _write_0i
+                  0x002410                  _write_1i
+                  0x00241c                  _wait_100us
+                  0x002422                  _wait_1ms
 
-.dinit            0x002368         0x7a
- .dinit           0x002368         0x7a data_init
+.dinit            0x002428         0x7a
+ .dinit           0x002428         0x7a data_init
 
-.text             0x0023e2         0x46
- .text            0x0023e2         0x46 build/default/production/final_main.o
-                  0x0023e2                  _initPIC24
-                  0x0023fc                  _main
+.text             0x0024a2         0x46
+ .text            0x0024a2         0x46 build/default/production/final_main.o
+                  0x0024a2                  _initPIC24
+                  0x0024bc                  _main

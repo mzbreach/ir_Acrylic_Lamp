@@ -16,6 +16,7 @@ extern "C" {
 void IR_Setup(void);
 void TesterLEDSetup(void);
 void decrypt(void);
+void displayDecypher(void);
 void leadSignalRecieved(unsigned long long int leadSignalTime);
 
 #ifdef	__cplusplus
