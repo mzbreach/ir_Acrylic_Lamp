@@ -95,50 +95,50 @@ MP_LINKER_FILE_OPTION=,--script=p24FJ64GA002.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/I2C_LCD.o: I2C_LCD.c  .generated_files/flags/default/8d58ab942586184903d80e8918362ce0010a2e04 .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
+${OBJECTDIR}/I2C_LCD.o: I2C_LCD.c  .generated_files/flags/default/2a7d92f560bf863e661e0758f2205d7d074b6403 .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/I2C_LCD.o.d 
 	@${RM} ${OBJECTDIR}/I2C_LCD.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  I2C_LCD.c  -o ${OBJECTDIR}/I2C_LCD.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/I2C_LCD.o.d"      -g -D__DEBUG     -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/IR_lib.o: IR_lib.c  .generated_files/flags/default/b737424f1a78bed4f494bb5f21832b8b70bd3c82 .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
+${OBJECTDIR}/IR_lib.o: IR_lib.c  .generated_files/flags/default/7748b050b6e5ab6243c8d1f32c25f57e43a7dc8c .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/IR_lib.o.d 
 	@${RM} ${OBJECTDIR}/IR_lib.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  IR_lib.c  -o ${OBJECTDIR}/IR_lib.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/IR_lib.o.d"      -g -D__DEBUG     -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/final_main.o: final_main.c  .generated_files/flags/default/5d97c544940c6512049e6d0e44caf9cd8ab4cdc6 .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
+${OBJECTDIR}/final_main.o: final_main.c  .generated_files/flags/default/d81fa9042ccf97d0d9a9ad22830998d2a44119ae .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/final_main.o.d 
 	@${RM} ${OBJECTDIR}/final_main.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  final_main.c  -o ${OBJECTDIR}/final_main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/final_main.o.d"      -g -D__DEBUG     -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/LedStrip_lib.o: LedStrip_lib.c  .generated_files/flags/default/ebf4830810f4a3cde0032af3e304ad12b596f575 .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
+${OBJECTDIR}/LedStrip_lib.o: LedStrip_lib.c  .generated_files/flags/default/23533e7c2d11da66933463b05357434ad74b160 .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/LedStrip_lib.o.d 
 	@${RM} ${OBJECTDIR}/LedStrip_lib.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  LedStrip_lib.c  -o ${OBJECTDIR}/LedStrip_lib.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/LedStrip_lib.o.d"      -g -D__DEBUG     -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 else
-${OBJECTDIR}/I2C_LCD.o: I2C_LCD.c  .generated_files/flags/default/57a4544b22ee5c4891573fe26ce45e8dfcc486ad .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
+${OBJECTDIR}/I2C_LCD.o: I2C_LCD.c  .generated_files/flags/default/7a284d415eed39f5dc92045908104744e3b0a608 .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/I2C_LCD.o.d 
 	@${RM} ${OBJECTDIR}/I2C_LCD.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  I2C_LCD.c  -o ${OBJECTDIR}/I2C_LCD.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/I2C_LCD.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/IR_lib.o: IR_lib.c  .generated_files/flags/default/2b1448988cfb4834a982c33e2d53ede1b7cf9dfd .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
+${OBJECTDIR}/IR_lib.o: IR_lib.c  .generated_files/flags/default/bf3145d7ac2722b9972442558f65b0e1a4d135b8 .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/IR_lib.o.d 
 	@${RM} ${OBJECTDIR}/IR_lib.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  IR_lib.c  -o ${OBJECTDIR}/IR_lib.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/IR_lib.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/final_main.o: final_main.c  .generated_files/flags/default/453d08c2fdb22514ed3e0a7ee0f266c26936662b .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
+${OBJECTDIR}/final_main.o: final_main.c  .generated_files/flags/default/84e4149ffa70197aa9058df7170e46f8aac2a981 .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/final_main.o.d 
 	@${RM} ${OBJECTDIR}/final_main.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  final_main.c  -o ${OBJECTDIR}/final_main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/final_main.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/LedStrip_lib.o: LedStrip_lib.c  .generated_files/flags/default/e5018c195d39133d4dc48f313e77edced8e48028 .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
+${OBJECTDIR}/LedStrip_lib.o: LedStrip_lib.c  .generated_files/flags/default/2b848f822e4756fc32ac80b134c374d644bd601c .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/LedStrip_lib.o.d 
 	@${RM} ${OBJECTDIR}/LedStrip_lib.o 
@@ -149,14 +149,14 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/asm_lib.o: asm_lib.s  .generated_files/flags/default/351319abf103b1c5426e7e0cca0dc70db676f05b .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
+${OBJECTDIR}/asm_lib.o: asm_lib.s  .generated_files/flags/default/ac3a04097f00577d89d1ccb0c5d714afc5df1f6 .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/asm_lib.o.d 
 	@${RM} ${OBJECTDIR}/asm_lib.o 
 	${MP_CC} $(MP_EXTRA_AS_PRE)  asm_lib.s  -o ${OBJECTDIR}/asm_lib.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -D__DEBUG   -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,-MD,"${OBJECTDIR}/asm_lib.o.d",--defsym=__MPLAB_BUILD=1,--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,,-g,--no-relax$(MP_EXTRA_AS_POST)  -mdfp="${DFP_DIR}/xc16"
 	
 else
-${OBJECTDIR}/asm_lib.o: asm_lib.s  .generated_files/flags/default/ab5e91c81671a8fc8ea9866687c22c35f79984ee .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
+${OBJECTDIR}/asm_lib.o: asm_lib.s  .generated_files/flags/default/c6ac1fb714f7a79d244c18045f5a9ee7356b8b08 .generated_files/flags/default/b10d6bd140b348e29df3272eb1901b61423d793e
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/asm_lib.o.d 
 	@${RM} ${OBJECTDIR}/asm_lib.o 
