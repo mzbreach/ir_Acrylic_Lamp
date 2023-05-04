@@ -77,7 +77,7 @@ void IR_Setup(void) {
 }
 
 /**
- * Tester Code
+ * Configures the LEDs on pins 15 and 16 as outputs
  */
 void TesterLEDSetup(void) {
     TRISBbits.TRISB7 = 0; //Sets pin RB7 / pin 16 to an output pin
@@ -85,7 +85,7 @@ void TesterLEDSetup(void) {
 }
 
 /**
- * Timer 2 Interrupt - Sets flag to 0 and counts the number of overflows
+ * Timer 2 Interrupt - Sets flag to 0 and increments the number of overflows
  */
 void __attribute__((interrupt, auto_psv)) _T2Interrupt() {
     _T2IF = 0; //T2 interrupt flag reset
@@ -163,24 +163,26 @@ void displayDecypher(void){
     int j;
     int k;
     int l;
-    for(i = 0; i < 8; i++){
+    for(i = 0; i < 8; i++){//display first 8 bits on top row
         lcd_printChar(IR_Signal[i]);
     }
     lcd_setCursor(1,0);
-    for(j = 0; j < 8; j++){
+    for(j = 0; j < 8; j++){//display next 8 bits on bottom row
         lcd_printChar(IR_Signal[j + 8]);
     }
-    delay_ms(1000);
+    delay_ms(1000);//wait 1s to allow user to look at first half of signal
+
     lcd_setCursor(0,0);
-    for(k = 0; k < 8; k++){
+    for(k = 0; k < 8; k++){//display bits 16-23 on top row after delay
         lcd_printChar(IR_Signal[k + 16]);
     }
     lcd_setCursor(1,0);
-    for(l = 0; l < 8; l++){
+    for(l = 0; l < 8; l++){//display bits 24-31 on bottom row
         lcd_printChar(IR_Signal[l + 24]);
     }
-    delay_ms(1000);
-    lcd_cmd(0b00000001);
+    delay_ms(1000);//wait 1s for user to look at second half of signal
+
+    lcd_cmd(0b00000001);//clear display
 }
 
 /**
@@ -193,7 +195,7 @@ void decrypt(void) {
     lcd_setCursor(0,0);
     
     
-    char possibleVals[32][32] = {
+    char possibleVals[32][32] = { //32x32 char array storing all possible button values for us to match against
         "00000000111101110011100011000111",
         "00000000111101111011100001000111",
         "00000000111101110111100010000111",
@@ -227,7 +229,6 @@ void decrypt(void) {
         "00000000111101110101100010100111",
         "00000000111101111101100000100111"};
     
-    
     int numMatch = 0;
     int a;
     int b;
@@ -239,11 +240,12 @@ void decrypt(void) {
         }
         if(numMatch == 13){
             numMatch = 0;
-            break; //lmao - what I say not to do lol
+            break;//leave outer for loop when button is found ==> a is the integer of the
+                  //located button
         }
         else
             numMatch = 0;
-    }//when this breaks, the button pressed should be the value of a..
+    }
     
     if(a < 32)
         LATBbits.LATB7 = 1;//turn on status LED when signal is recieved
@@ -262,7 +264,7 @@ void decrypt(void) {
             break;
         
         case 3:
-            lcd_printStr("Btn 3");
+            lcd_printStr("Btn 3");//speed functiton
             dynamicFctn = 's';
             break;
         
@@ -296,7 +298,7 @@ void decrypt(void) {
             break;
             
         case 11:
-            lcd_printStr("Btn 11");
+            lcd_printStr("Btn 11");//rainbow/wheel function
             dynamicFctn = 'g';
             break;
 
@@ -313,7 +315,7 @@ void decrypt(void) {
             break;
 
         case 15:
-            lcd_printStr("Btn 15");
+            lcd_printStr("Btn 15");//fade funtion
             dynamicFctn = 'f';
             break;
 
@@ -350,45 +352,45 @@ void decrypt(void) {
             break;
 
         case 24:
-            lcd_printStr("Btn 24");
+            lcd_printStr("Btn 24");//wave function (sorry schrodinger)
             waveSetup();
             dynamicFctn = 'w';
             break;
 
         case 25:
-            lcd_printStr("Btn 25");
+            lcd_printStr("Btn 25");//strobe function
             dynamicFctn = 'v';
             break;
 
         case 26:
-            lcd_printStr("Btn 26");
+            lcd_printStr("Btn 26");//twinkle function
             twinkleSetup();
             dynamicFctn = 't';
             break;
 
         case 27:
-            lcd_printStr("Btn 27");
+            lcd_printStr("Btn 27");//asynWave function
             asynWaveSetup();
             dynamicFctn = 'y';
             break;
 
         case 28:
-            lcd_printStr("Btn 28");
+            lcd_printStr("Btn 28");//panel 1 select
             previousPanel = 1;
             break;
 
         case 29:
-            lcd_printStr("Btn 29");
+            lcd_printStr("Btn 29");//panel 2 select
             previousPanel = 2;
             break;
 
         case 30:
-            lcd_printStr("Btn 30");
+            lcd_printStr("Btn 30");//panel 3 select
             previousPanel = 3;
             break;
 
         case 31:
-            lcd_printStr("Btn 31");
+            lcd_printStr("Btn 31");//select all panels
             previousPanel = 4;
             break;
             
@@ -396,15 +398,15 @@ void decrypt(void) {
             lcd_printStr("notFound");
             break;
     }
-    if((a == 1) || (a < 11 && a > 3) || (a < 15 && a > 11) || (a < 19 && a > 15) || (a < 23 && a > 19)){
-        dynamicFctn = 'a';
-        masterStaticColorCreator(a);
-        writeColorToPanel(previousPanel, staticColor);
+    if((a == 1) || (a < 11 && a > 3) || (a < 15 && a > 11) || (a < 19 && a > 15) || (a < 23 && a > 19)){//allows us to check whether or not a dynamic function has been called.  If not, we reset the dynamicFctn variable to a char that will not match any clauses in the switch statement of TMR1.  This way, we can disable a dynamic funciton if we want to change the panel
+        dynamicFctn = 'a';//set dynamicFctn select variable to a non-matching char
+        masterStaticColorCreator(a);//create static color for the pressed button
+        writeColorToPanel(previousPanel, staticColor);//write the static color to the desired panel
 
     }
     
-    delay_ms(1000);
+    delay_ms(1000);//wait 1s for led to sufficiently display
     LATBbits.LATB7 = 0;//turn off status LED
     
-    lcd_cmd(0b00000001);
+    lcd_cmd(0b00000001);//reset the LCD
 }
