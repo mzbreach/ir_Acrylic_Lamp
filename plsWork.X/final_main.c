@@ -1,5 +1,9 @@
-#include <p24FJ64GA002.h>
+/* 
+ * File:   final_main.c
+ * Project: IR Acrylic Lamp
+ */
 
+#include <p24FJ64GA002.h>
 #include "xc.h"
 #include "stdint.h"
 #include "IR_lib.h"
@@ -24,6 +28,7 @@
 #pragma config FNOSC = FRCPLL      // Oscillator Select (Fast RC Oscillator with PLL module (FRCPLL))
 
 
+//PIC24 Initialization
 void initPIC24(void){
     CLKDIVbits.RCDIV=0;
     AD1PCFG = 0x9FFF;
@@ -31,6 +36,7 @@ void initPIC24(void){
 }
 
 
+//Main Function
 int main(void) {    
     initPIC24();
     LedStrip_Setup();
@@ -49,14 +55,7 @@ int main(void) {
     IR_Setup();
     TesterLEDSetup();
     LedStrip_Setup();
-
-
-//    ledTest();
         
     while(1);
-//    
-//    while(1){
-//        asm("nop");
-//    }
     return 0;
 }

@@ -1,8 +1,6 @@
 /* 
- * File:   sarmi033_21led_asmLib_V001.h
- * Author: cheocedillo
- *
- * Created on April 23, 2023, 11:51 AM
+ * File:   asm_lib.h
+ * Project: IR Acrylic Lamp
  */
 
 #ifndef ASM_LIB_H

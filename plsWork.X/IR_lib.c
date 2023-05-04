@@ -1,8 +1,6 @@
-/*
+/* 
  * File:   IR_lib.c
- * Author: jimen
- *
- * Created on March 25, 2023, 3:42 PM
+ * Project: IR Acrylic Lamp
  */
 
 #include "xc.h"

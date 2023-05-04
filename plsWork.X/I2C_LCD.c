@@ -1,10 +1,7 @@
-/*
+/* 
  * File:   I2C_LCD.c
- * Author: mzbre
- *
- * Created on April 12, 2023, 11:03 PM
+ * Project: IR Acrylic Lamp
  */
-
 
 #include "xc.h"
 #include "string.h"

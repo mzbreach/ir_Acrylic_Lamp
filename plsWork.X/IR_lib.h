@@ -1,8 +1,6 @@
 /* 
  * File:   IR_lib.h
- * Author: jimen
- *
- * Created on March 25, 2023, 3:44 PM
+ * Project: IR Acrylic Lamp
  */
 
 #ifndef IR_LIB_H

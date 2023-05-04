@@ -1,8 +1,6 @@
 /* 
  * File:   LedStrip_lib.h
- * Author: jimen
- *
- * Created on April 26, 2023, 9:51 PM
+ * Project: IR Acrylic Lamp
  */
 
 #ifndef LEDSTRIP_LIB_H

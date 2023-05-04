@@ -1,3 +1,7 @@
+/* 
+ * File:   LedStrip_lib.c
+ * Project: IR Acrylic Lamp
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
