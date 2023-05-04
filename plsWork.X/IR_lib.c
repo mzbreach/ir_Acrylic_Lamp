@@ -13,24 +13,16 @@
 #include "I2C_LCD.h"
 #include "LedStrip_lib.h"
 
-volatile int LedStatus = 0;
 volatile unsigned long long int overflow = 0;
 volatile unsigned long long int currRiseTime = 0;
 volatile unsigned long long int prevRiseTime = 0;
 volatile unsigned long long int elaspedRiseTime = 0;
-volatile unsigned long long int myCounter1 = 0;
-
-volatile unsigned int leftShiftCounter = 0;
 
 volatile int leadSignal = 0;
 volatile int endSignal = 1;
 
 volatile char IR_Signal[32];
-volatile int readIdx = 0;
 volatile int writeIdx = 0;
-
-volatile int rainbowFunction = 0;
-
 
 /*
  * This function works to ensure that our code is getting to the desired point
