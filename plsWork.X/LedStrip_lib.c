@@ -617,7 +617,7 @@ void speedSetup(void){
             break;
         }
     }
-    speed1 = staticColor;
+    memcpy(speed1, staticColor, sizeof(speed1));
     masterStaticColorCreator(4);//red
     for(i = (ARRAY_SIZE / 2) - 3; i < (ARRAY_SIZE / 2) + 3; i++){//put middle pixel white
         if(i % 3 == 0){//start of a pixel
@@ -627,7 +627,7 @@ void speedSetup(void){
             break;
         }
     }
-    speed2 = staticColor;
+    memcpy(speed2, staticColor, sizeof(speed2));
 }
 
 /* Speed function
