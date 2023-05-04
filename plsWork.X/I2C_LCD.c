@@ -7,6 +7,7 @@
 #include "string.h"
 #include <stdlib.h>
 
+//initializes LCD
 void lcd_init(void){
     I2C2BRG = 157;
     IFS3bits.MI2C2IF = 0;
@@ -30,6 +31,7 @@ void lcd_init(void){
     delay_ms(1);
 }
 
+//writes a command to the LCD
 void lcd_cmd(int command){
     //send START
     IFS3bits.MI2C2IF = 0;
@@ -61,6 +63,7 @@ void lcd_cmd(int command){
     //send stop
 }
 
+//tells PIC24 CPU to preform nop operation for ms milliseconds
 void delay_ms(unsigned int ms){
     while(ms-- > 0){
         asm("repeat #15998"); //delay 1 ms (every loop))
@@ -68,6 +71,7 @@ void delay_ms(unsigned int ms){
     }
 }
 
+//prints a single character to the LCD
 void lcd_printChar(char letter){
     
     I2C2CONbits.SEN = 1;//start sequence
@@ -91,10 +95,12 @@ void lcd_printChar(char letter){
     
 }
 
+//sets cursor on LCD to pos (x,y)
 void lcd_setCursor(char x, char y){
     lcd_cmd(((0x40 * x) + y) + 0b10000000);
 }
 
+//prints a string to the LCD by an iterative call to lcd_printChar()
 void lcd_printStr(const char myStr[]){
     int i;
     for(i = 0; i < strlen(myStr); i++){
@@ -102,10 +108,12 @@ void lcd_printStr(const char myStr[]){
     }
 }
 
+//Preforms a rightshift of one index of all contents on display
 void moveRight(void){
     lcd_cmd(0b00011100);
 }
 
+//Preforms a leftshift of one index of all contents on display
 void moveLeft(void){
     lcd_cmd(0b00011000);
 }
