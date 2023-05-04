@@ -62,24 +62,20 @@ void IR_Setup(void) {
     T2CONbits.TCKPS = 0b10; //prescaler of 1:1.  If we use the 62.5ns of Tcy and 15 cycles per period, we get 1us periods
     PR2 = 65535; //max PR
     TMR2 = 0;
-    
+
     IC1CON = 0;
     IC1CONbits.ICTMR = 1; //use Timer 2 for IC1
     IC1CONbits.ICI = 0; //Interrupt every capture
     IC1CONbits.ICM = 0b010; //010 for falling edge,011 for rising edge pg.134
+
     IPC0bits.IC1IP = 6;//second highest IP
     IPC1bits.T2IP = 7;//highest IP
- 
-    _IC1IF = 0;
 
+    _IC1IF = 0;
     _IC1IE = 1; //Enables IC1 interrupt
-    
     _T2IE = 1; //T2 interrupt enable
-    
     _T2IF = 0; //T2 interrupt flag reset
-    
     T2CONbits.TON = 1; //turn on T2
-    
 }
 
 /**
@@ -87,7 +83,7 @@ void IR_Setup(void) {
  */
 void TesterLEDSetup(void) {
     TRISBbits.TRISB7 = 0; //Sets pin RB7 / pin 16 to an output pin
-    TRISBbits.TRISB6 = 0; //Sets pin RB8 / pin 17 to an output pin
+    TRISBbits.TRISB6 = 0; //Sets pin RB6 / pin 15 to an output pin
 }
 
 /**
