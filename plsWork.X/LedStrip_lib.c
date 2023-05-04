@@ -105,9 +105,8 @@ void LedStrip_Setup(void){
 
 void __attribute__((interrupt, auto_psv)) _T1Interrupt(){//ideally should trigger once every 10ms
     _T1IF = 0;
-    currentTime = (unsigned long long int)((PR1 + 1) * (LEDOverflow)+TMR1);
     switch(dynamicFctn){
-        case 'g'://gay function called
+        case 'g'://rainbow function called
 //            currentTime - prevTime >= 250
             if(LEDOverflow >= 25){
                 rainbow(rainbowCounter);
@@ -179,7 +178,7 @@ void __attribute__((interrupt, auto_psv)) _T1Interrupt(){//ideally should trigge
 
 
 /* This function converts the decimal representation of a color from an array 
- * grb[27] and places it into another array binaryGRB[648] as the binary 
+ * grb[ARRAY_SIZE] and places it into another array binaryGRB[24 * ARRAY_SIZE] as the binary 
  * representation of the same color. */
 
 void convertDecToBin(int grb[], int binaryGRB[]) {
@@ -189,7 +188,7 @@ void convertDecToBin(int grb[], int binaryGRB[]) {
     int check = 0b11111111;
     int binaryIndex = 0;
     
-    for (i = 0; i < 27; i++) {
+    for (i = 0; i < ARRAY_SIZE; i++) {
         for (j = 7; j >= 0; j--) {
             if (((grb[i] >> j) && check) == 0b000000001) {
                 binaryGRB[binaryIndex++] = 1;
@@ -208,7 +207,7 @@ void convertDecToBin(int grb[], int binaryGRB[]) {
 
 void writeBinToLED1(int binaryGRB[]) {
   int i;
-    for (i = 0; i < 648; i++) {
+    for (i = 0; i < (24 * ARRAY_SIZE); i++) {
         if (binaryGRB[i] == 1) {
             write_1();
         }
@@ -510,8 +509,6 @@ void writeColorToPanel(int panel, int color[]){
         memcpy(previousColor, color, sizeof(previousColor));
     }
     
-
-    
     // Save the selected panel as the previously selected panel for references later
     previousPanel = panel;
     
@@ -607,8 +604,25 @@ void rainbow(int state) {
 
 void speedSetup(void){
     masterStaticColorCreator(6);//blue
+    int i, j;
+    for(i = (ARRAY_SIZE / 2) - 3; i < (ARRAY_SIZE / 2) + 3; i++){//put middle pixel white
+        if(i % 3 == 0){//start of a pixel
+            for(j = 0; j < 6; j++){
+                staticColor[j] = 255;
+            }
+            break;
+        }
+    }
     speed1 = staticColor;
     masterStaticColorCreator(4);//red
+    for(i = (ARRAY_SIZE / 2) - 3; i < (ARRAY_SIZE / 2) + 3; i++){//put middle pixel white
+        if(i % 3 == 0){//start of a pixel
+            for(j = 0; j < 6; j++){
+                staticColor[j] = 255;
+            }
+            break;
+        }
+    }
     speed2 = staticColor;
 }
 
