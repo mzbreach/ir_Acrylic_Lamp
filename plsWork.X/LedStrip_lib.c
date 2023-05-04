@@ -834,7 +834,7 @@ void waveSetup(void){
     memcpy(wave4, previousColor, sizeof(wave1));
     memcpy(wave5, previousColor, sizeof(wave1));
     
-    for (i = 0; i < 27; i++) {
+    for (i = 0; i < ARRAY_SIZE; i++) {
         if (i < 3 || i > 24) {
             wave1[i] = 0;
             wave2[i] = 0;
