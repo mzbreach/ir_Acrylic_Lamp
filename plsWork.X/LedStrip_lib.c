@@ -4,7 +4,8 @@
 #include <string.h>
 #include "LedStrip_lib.h"
 #include "IR_lib.h"
-#include"xc.h"
+#include "xc.h"
+
 #define PERIOD 5
 
 int panel = 0; // Change this to change the LED strip
@@ -16,39 +17,39 @@ int color[ARRAY_SIZE] = {0};
 int staticColor[ARRAY_SIZE] = {0};
 int off[ARRAY_SIZE] = {0};
 
-int speed1[ARRAY_SIZE] = {0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 50, 50, 50, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255};
-int speed2[ARRAY_SIZE] = {0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 50, 50, 50, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0};
+int speed1[ARRAY_SIZE] = {0};
+int speed2[ARRAY_SIZE] = {0};
 
-int twinkle1[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-int twinkle2[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-int twinkleRestore[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int twinkle1[ARRAY_SIZE] = {0};
+int twinkle2[ARRAY_SIZE] = {0};
+int twinkleRestore[ARRAY_SIZE] = {0};
 
-int invert1[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int invert1[ARRAY_SIZE] = {0};
 
-int wave1[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-int wave2[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-int wave3[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-int wave4[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-int wave5[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int wave1[ARRAY_SIZE] = {0};
+int wave2[ARRAY_SIZE] = {0};
+int wave3[ARRAY_SIZE] = {0};
+int wave4[ARRAY_SIZE] = {0};
+int wave5[ARRAY_SIZE] = {0};
 
-int asynWave1[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-int asynWave2[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-int asynWave3[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-int asynWave4[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-int asynWave5[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-int asynWave6[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-int asynWave7[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-int asynWave8[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int asynWave1[ARRAY_SIZE] = {0};
+int asynWave2[ARRAY_SIZE] = {0};
+int asynWave3[ARRAY_SIZE] = {0};
+int asynWave4[ARRAY_SIZE] = {0};
+int asynWave5[ARRAY_SIZE] = {0};
+int asynWave6[ARRAY_SIZE] = {0};
+int asynWave7[ARRAY_SIZE] = {0};
+int asynWave8[ARRAY_SIZE] = {0};
 
 // Testing LED strip color arrays
 // Set one of these equal to a pre-made color array for easy access to colors
 // For example, "memcpy(grb1, green, sizeof(grb1));" will output green to LED Strip 1
 
-int grb1[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-int grb2[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-int grb3[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int grb1[ARRAY_SIZE] = {0};
+int grb2[ARRAY_SIZE] = {0};
+int grb3[ARRAY_SIZE] = {0};
 int previousPanel = 4;
-int previousColor[ARRAY_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int previousColor[ARRAY_SIZE] = {0};
 
 // These arrays hold the converted values of the 27-element color array into the binary representation for easy access
 // to writing HIGH or LOW to the LED pixels to actually output the correct color for each LED
@@ -601,6 +602,14 @@ void rainbow(int state) {
             break;
     }
     writeColorToPanel(previousPanel, staticColor);
+}
+
+
+void speedSetup(void){
+    masterStaticColorCreator(6);//blue
+    speed1 = staticColor;
+    masterStaticColorCreator(4);//red
+    speed2 = staticColor;
 }
 
 /* Speed function
