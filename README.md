@@ -2,7 +2,7 @@
 This is our EE2361 final project code repository.  Contained in the plsWork.X folder are the various C files (both .c and .h).  By opening the .x project folder in MPLab XIDE (ver. 5.50 verified working), you may view these files and even flash your microcontroller with the appropriate software.  Please note, it is entirely possible that the code does not clean and build the first time aroud.  Thereofre, it may be required to re-clean and build a second time in order to properly flash the code.
 
 Project members include:
-- Matthew Breach ([breac001](mailto:breac001@umn.edu))
+- Matthew Breach ([breac001](< a href="mailto:breac001@umn.edu">breac001< /a>))
 - Jimena Jimenez (jimen238)
 - Cheo Cedillo (cedil023)
 - Kevin Sarmiento-Alvarez (sarmi003)
